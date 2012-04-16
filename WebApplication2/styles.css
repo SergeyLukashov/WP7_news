@@ -1,5 +1,6 @@
 ﻿body
 {
+    font-family: 'Segoe UI';
 }
 
 h2
@@ -39,9 +40,10 @@ ul
 
 #content
 {
-    font-style: italic;
-    margin-left:320px;
-    margin-right:240px;
+    font-style: normal;
+    margin-left: 320px;
+    margin-right: 240px;
+    
 }
 
 #login
