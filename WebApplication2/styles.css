@@ -1,0 +1,69 @@
+﻿body
+{
+}
+
+h2
+{
+    margin: 0 0 5 0;
+    padding:0 0 5 0;
+}
+
+ul
+{
+    float: left;
+}
+
+#logo
+{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}   
+
+#menu
+{
+    border-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#user
+{
+    float:right;
+    margin-top:5px;
+    padding-top:5px;
+    margin-right: 40px;
+    padding-right: 40px;
+    width:205px;    
+    text-align:right;
+}
+
+#content
+{
+    font-style: italic;
+    margin-left:320px;
+    margin-right:240px;
+}
+
+#login
+{
+    float:right;
+    margin-right: 40px;
+    padding-right: 40px;
+    height: 133px;
+    width: 120px;
+}
+
+#newsTextBox
+{
+    margin-left: 1px;
+    margin-right: 10px;
+    height:300px;
+    width:98%;
+}
+
+#TextBox3
+{
+    margin-left: 1px;
+    margin-right: 10px;
+    width:98%;
+}
