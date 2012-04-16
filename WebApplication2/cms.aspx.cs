@@ -8,10 +8,6 @@ namespace WP_Site
 {
     public partial class cms:System.Web.UI.Page
     {
-        //int category=0;
-
-        //protected void Pa
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,25 +16,28 @@ namespace WP_Site
                 Session["category"] = 0;
             }
 
-            if ((Session.Count >= 2) && (Session.Keys[1] == "true"))
-                Label3.Text = Session.Contents.Keys.Get(0);
+            if ((Session["isLogged"] != null) && ((bool)Session["isLogged"] == true))
+            {
+                Label3.Text = (string)Session["login"];
+            }
             else
             {
                 Label3.Text = "Please log-in...";
                 LinkButton1.Visible = false;
                 HyperLink1.Visible = false;
             }
+            //////////////////////////////////////////////////// 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string s = "";
             if ((TextBox1.Text == "admin") && (TextBox2.Text == "123"))
             {
-                Session.Add(TextBox1.Text, s);
-                if (Session.Count >= 1)
-                    Label3.Text = Session.Keys.Get(0);
-                Session.Add("true", s);
+                Session["login"] = TextBox1.Text;
+                //there was been if
+                Label3.Text = (string)Session["login"];
+                Session["isLogged"] = true;
+
                 LinkButton1.Visible = true;
                 HyperLink1.Visible = true;
             }
@@ -145,17 +144,18 @@ namespace WP_Site
             Label4.Visible = true;
             Button2.Text = "Добавить";
             //System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=F\SQLEXPRESS;Initial Catalog=contentDB;Integrated Security=True");
-            System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=localhost;Initial Catalog=contentDB;Integrated Security=True");
-            sqlc.Open();
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("Select * from page4 ORDER BY ID DESC", sqlc);
+            //System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=localhost;Initial Catalog=contentDB;Integrated Security=True");
+            //sqlc.Open();
+            //System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("Select * from page4 ORDER BY ID DESC", sqlc);
 
-            System.Data.SqlClient.SqlDataReader sdr = cmd.ExecuteReader();
-            while (sdr.Read())
-            {
-                //Response.Write("<br>" + sdr.GetString(1) + "<br><br><hr>");
-                newsTextBox.Text = sdr.GetString(1);
-            }
-            sqlc.Close();
+            //System.Data.SqlClient.SqlDataReader sdr = cmd.ExecuteReader();
+            //while (sdr.Read())
+            //{
+            //    //Response.Write("<br>" + sdr.GetString(1) + "<br><br><hr>");
+            //    newsTextBox.Text = sdr.GetString(1);
+            //}
+            //sqlc.Close();
+            newsTextBox.Text = "";
         }
 
         protected void Button2_Click(object sender, EventArgs e)//add
@@ -278,7 +278,7 @@ namespace WP_Site
                         newsTextBox.Text = "Заполните все поля!";
                     }
                     break;
-            }
+            }   
 
             sqlc.Close();
         }

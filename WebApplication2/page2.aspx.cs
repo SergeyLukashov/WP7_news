@@ -9,25 +9,28 @@ namespace WP_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((Session.Count >= 2) && (Session.Keys[1] == "true"))
-                Label3.Text = Session.Contents.Keys.Get(0);
+            if ((Session["isLogged"] != null) && ((bool)Session["isLogged"] == true))
+            {
+                Label3.Text = (string)Session["login"];
+            }
             else
             {
                 Label3.Text = "Please log-in...";
                 LinkButton1.Visible = false;
                 HyperLink1.Visible = false;
             }
+            //////////////////////////////////////////////////// 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string s = "";
             if ((TextBox1.Text == "admin") && (TextBox2.Text == "123"))
             {
-                Session.Add(TextBox1.Text, s);
-                if (Session.Count >= 1)
-                    Label3.Text = Session.Keys.Get(0);
-                Session.Add("true", s);
+                Session["login"] = TextBox1.Text;
+                //there was been if
+                Label3.Text = (string)Session["login"];
+                Session["isLogged"] = true;
+
                 LinkButton1.Visible = true;
                 HyperLink1.Visible = true;
             }
