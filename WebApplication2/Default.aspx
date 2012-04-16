@@ -25,10 +25,17 @@
     </center>
     <div id="menu">
         <ul type="circle">
-            <li><a href="page1.aspx">Интерфейс «Metro»</a></li>
-            <li><a href="page2.aspx">Требования к оборудованию</a></li>
-            <li><a href="page3.aspx">Разработка игр и приложений WP7</a></li>
-            <li><a href="page4.aspx">Дополнительные сведения</a></li>
+            <%
+                //System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=F\SQLEXPRESS;Initial Catalog=contentDB;Integrated Security=True");
+                System.Data.SqlClient.SqlConnection sqlc_m = new System.Data.SqlClient.SqlConnection(@"Data Source=localhost;Initial Catalog=contentDB;Integrated Security=True");
+                sqlc_m.Open();
+                System.Data.SqlClient.SqlCommand cmd_m = new System.Data.SqlClient.SqlCommand("Select * from pages", sqlc_m);
+
+                System.Data.SqlClient.SqlDataReader sdr_m = cmd_m.ExecuteReader();
+                while (sdr_m.Read())
+                    Response.Write("<li><a href=\"" + sdr_m.GetString(3).ToString() + "\">" + sdr_m.GetString(1).ToString() + "</a></li>");
+                sqlc_m.Close();
+            %>
         </ul>
     </div>
     <div id="login">
