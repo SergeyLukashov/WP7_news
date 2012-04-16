@@ -57,15 +57,17 @@ ul
 
 #newsTextBox
 {
-    margin-left: 1px;
-    margin-right: 10px;
     height:300px;
-    width:98%;
+    width:95%;
 }
 
 #TextBox3
 {
-    margin-left: 1px;
-    margin-right: 10px;
-    width:98%;
+    width: 95%;
+}
+
+.cms_edit
+{
+    margin-left: 35px;
+    margin-right: 40px;
 }

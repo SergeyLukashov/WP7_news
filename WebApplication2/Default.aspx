@@ -24,7 +24,7 @@
             Главная страница</h2>
     </center>
     <div id="menu">
-        <ul type="circle">
+        <ul>
             <%
                 //System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=F\SQLEXPRESS;Initial Catalog=contentDB;Integrated Security=True");
                 System.Data.SqlClient.SqlConnection sqlc_m = new System.Data.SqlClient.SqlConnection(@"Data Source=localhost;Initial Catalog=contentDB;Integrated Security=True");
@@ -32,8 +32,13 @@
                 System.Data.SqlClient.SqlCommand cmd_m = new System.Data.SqlClient.SqlCommand("Select * from pages", sqlc_m);
 
                 System.Data.SqlClient.SqlDataReader sdr_m = cmd_m.ExecuteReader();
+                int pageCount=0;
                 while (sdr_m.Read())
+                {
                     Response.Write("<li><a href=\"" + sdr_m.GetString(3).ToString() + "\">" + sdr_m.GetString(1).ToString() + "</a></li>");
+                    pageCount++;
+                }
+                Session["pageCount"] = pageCount;
                 sqlc_m.Close();
             %>
         </ul>

@@ -41,12 +41,13 @@
             //System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=F\SQLEXPRESS;Initial Catalog=contentDB;Integrated Security=True");
             System.Data.SqlClient.SqlConnection sqlc = new System.Data.SqlClient.SqlConnection(@"Data Source=localhost;Initial Catalog=contentDB;Integrated Security=True");
             sqlc.Open();
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("Select * from page1 ORDER BY ID DESC", sqlc);
+            string query="Select * from pages where Source='page1.aspx'";
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(query, sqlc);
 
             System.Data.SqlClient.SqlDataReader sdr = cmd.ExecuteReader();
             while (sdr.Read())
             {
-                Response.Write("<br>" + sdr.GetString(1) + "<br><br><hr>");
+                Response.Write("<br>" + sdr.GetString(2) + "<br><br><hr>");
             }
             sqlc.Close();
         %>

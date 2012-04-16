@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.IO;
 
 namespace WP_Site
 {
@@ -167,7 +168,7 @@ namespace WP_Site
             System.Data.SqlClient.SqlDataAdapter sda;
             System.Data.DataSet ds;
 
-            int category =(int) Session["category"];
+            int category = (int)Session["category"];
             switch (category)
             {
                 case 0:
@@ -198,7 +199,7 @@ namespace WP_Site
                     if ((newsTextBox.Text != ""))
                     {
                         ds.Tables[0].Rows[0].BeginEdit();
-                        ds.Tables[0].Rows[0].ItemArray=new object[]{0,newsTextBox.Text};
+                        ds.Tables[0].Rows[0].ItemArray = new object[] { 0, newsTextBox.Text };
                         ds.Tables[0].Rows[0].EndEdit();
 
                         sda.Update(ds);
@@ -279,8 +280,18 @@ namespace WP_Site
                     break;
             }
 
-            
             sqlc.Close();
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            int pageCount = (int)Session["pageCount"];
+            string fpath=Page.MapPath( Page.Page.AppRelativeVirtualPath);
+            string fileName = fpath.Substring(0,fpath.Length-8)+"page" + (pageCount + 1).ToString() + ".aspx";
+            //newsTextBox.Text = fileName;
+            StreamWriter sw=new StreamWriter(fileName);
+            sw.WriteLine("qwerty");
+            sw.Close();
         }
     }
 }

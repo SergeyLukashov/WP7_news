@@ -36,7 +36,8 @@
                 <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click" Font-Size="Small">Ред.</asp:LinkButton></li>
             <li><a href="page4.aspx">Дополнительные сведения</a>&nbsp;&nbsp;
                 <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click" Font-Size="Small">Ред.</asp:LinkButton></li>
-            <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton2_Click" Font-Size="Small">Добавить</asp:LinkButton>
+                <br>
+            <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click" Font-Size="Small">Добавить</asp:LinkButton>
         </ul>
     </div>
     <div id="login">
@@ -47,16 +48,19 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Enter" />
     </div>
     <div id="content">
-        <asp:Label ID="Label4" runat="server" Font-Size="Small" ForeColor="Black" Text="Заголовок:"></asp:Label>
+        <div class="cms_edit">
+            <asp:Label ID="Label4" runat="server" Font-Size="Small" ForeColor="Black" Text="Заголовок:"></asp:Label>
+            <br>
+            <asp:TextBox ID="TextBox3" runat="server" Height="20px"></asp:TextBox>
+        </div>
         <br>
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-        <br>
-        <br>
-        <asp:Label ID="Label5" runat="server" Font-Size="Small" ForeColor="Black" Text="Содержание:"></asp:Label>
-        <asp:TextBox ID="newsTextBox" TextMode="MultiLine" runat="server" Font-Names="Tahoma"></asp:TextBox>
-        <br>
-        <br>
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Добавить" />
+        <div class="cms_edit">
+            <asp:Label ID="Label5" runat="server" Font-Size="Small" ForeColor="Black" Text="Содержание:"></asp:Label>
+            <br>
+            <asp:TextBox ID="newsTextBox" TextMode="MultiLine" runat="server" Font-Names="Tahoma"></asp:TextBox>
+            <br>
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Добавить" />
+        </div>
     </div>
     </form>
 </body>
