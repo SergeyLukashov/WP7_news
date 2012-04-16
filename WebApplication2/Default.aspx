@@ -21,7 +21,7 @@
     </div>
     <center>
         <h2>
-            Главная страница!</h2>
+            Главная страница</h2>
     </center>
     <div id="menu">
         <ul type="circle">
